@@ -10,7 +10,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("<p>Connection failed: " . $conn->connect_error . "</p>");
 }
- echo $message;
 
 $sql = "SELECT * FROM fall";
 $result = $conn->query($sql);
@@ -30,15 +29,33 @@ if ($result->num_rows > 0) {
 }
 
 function generateEventTableHTML($events) {
-	$html = "<table>\n";
-	$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
+
+	if ($message) {
+			$html = "<p class='message'>$message</p>\n";
+		}
 	
-	foreach ($events as $event) {
-		$html .= "<tr><td>{$event['organization']}</td><td>{$event['event']}</td><td>{$event['description']}</td><td>{$event['location']}</td><td>{$event['whatTime']}</td></tr>\n";
-	}
-	$html .= "</table>\n";
+		if (count($events) < 1) {
+			$html .= "<p>No events to display!</p>\n";
+			return $html;
+		}
 	
-	return $html;
+		$html .= "<table>\n";
+		$html .= "<tr><th>actions</th><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
+	
+		foreach ($events as $event) {
+			$id = $event['id'];
+			$org = $event['organization'];
+			$EventTitle = $event['event'];
+			$description = ($event['description']) ? $event['description'] : '';
+			$location = $event['location'];
+			$whatTime=$event['whatTime'];
+			
+			$html .= "<tr><td><form action='fallSemester.php' method='post'><input type='hidden' name='action' value='delete' /><input type='submit' value='Delete'>
+			<input type='hidden' name='action' value='update' /><input type='submit' value='Update'></form></td><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td></tr>\n";
+		}
+		$html .= "</table>\n";
+	
+		return $html;
 }
 
 function generatePageHTML($title, $body) {
