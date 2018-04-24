@@ -86,6 +86,7 @@ function generatePageHTML($title, $body) {
 <title>$title</title>
 </head>
 <body>
+<button onclick="location.href='FinalProject.html'"> Home </button>
 <h1>Fall Events</h1>
 $body
 </body>
