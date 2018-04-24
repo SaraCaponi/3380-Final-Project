@@ -10,6 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("<p>Connection failed: " . $conn->connect_error . "</p>");
 }
+ echo $message;
 
 $sql = "SELECT * FROM fall";
 $result = $conn->query($sql);
@@ -24,11 +25,11 @@ if ($result->num_rows > 0) {
     if ($_GET["responseType"] == "json") {
     	print json_encode($events);
     } else {  // html page
-    	print generatePageHTML("Events", generateTaskTableHTML($events));
+    	print generatePageHTML("Events", generateEventTableHTML($events));
     }
 }
 
-function generateTaskTableHTML($events) {
+function generateEventTableHTML($events) {
 	$html = "<table>\n";
 	$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
 	
@@ -59,4 +60,38 @@ EOT;
 
 	return $html;
 }
+function addEvent() {
+		$message = '';
+	
+		$organization = $_POST['org'];
+		$Eventtitle = $_POST['title'] ? $_POST['title'] : "untitled";
+		$description = $_POST['description'] ? $_POST['description'] : "";
+		$location = $_POST['location'] ? $_POST['location'] : "nolocation";
+		$when = $_POST['when'] ? $_POST['when'] : "notime";
+
+		
+		$mysqli = new mysqli($servername, $username, $password, $dbname);
+
+
+		if ($mysqli->connect_error) {
+			$message = $mysqli->connect_error;
+		} else {
+			$organization = $mysqli->real_escape_string($organization);
+			$Eventtitle = $mysqli->real_escape_string($Eventtitle);
+			$description = $mysqli->real_escape_string($description);
+			$location = $mysqli->real_escape_string($location);
+			$when = $mysqli->real_escape_string($when);
+	
+			$sql = "INSERT INTO tasks (organization, event,description,location, whatTime) VALUES ('$organization', '$Eventtitle', '$description', '$location','$when')";
+	
+			if ($result = $mysqli->query($sql)) {
+				$message = "Task was added";
+			} else {
+				$message = $mysqli->error;
+			}
+
+		}
+		
+		return $message;
+	}
 ?>
