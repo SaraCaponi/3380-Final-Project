@@ -49,6 +49,7 @@ function generatePageHTML($title, $body) {
 <title>$title</title>
 </head>
 <body>
+<h1>Fall Events</h1>
 $body
 </body>
 </html>
