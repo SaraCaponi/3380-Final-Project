@@ -45,7 +45,6 @@ function generatePageHTML($title, $body) {
 <!DOCTYPE html>
 <html>
 <head>
-<style> body{ background: red;} </style>
 <title>$title</title>
 </head>
 <body>
