@@ -1,36 +1,35 @@
 <?php
-include("db_credentials.php");
+
    session_start();
+require('db_credentials.php');
+		$mysqli = new mysqli($servername, $username, $password, $dbname);
+	
+		if ($mysqli->connect_error) {
+			$message = $mysqli->connect_error;
+		} 
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       
-      $myusername = mysqli_real_escape_string($conn,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
+      $myusername = mysqli_real_escape_string($mysqli,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($mysqli,$_POST['password']); 
       
       $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($conn,$sql);
+      $result = mysqli_query($mysqli,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
 		
       if($count == 1) {
-         session_register("myusername");
+//         session_register("myusername");
          $_SESSION['login_user'] = $myusername;
 
          header("location: fallSemester.php");
       }else {
-         $error = "Your Login Name or Password is invalid";
+         $message = "Your Login Name or Password is invalid. Try Again";
       }
    }
 ?>
-
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -46,7 +45,7 @@ include("db_credentials.php");
 		function DisplayLogin(){
 			
 			var item= document.getElementById("blank");
-			var string= " <form action = '' method = 'post''>User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='text' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Submit</button>";
+			var string= " <form action = '' method = 'post''>User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='password' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Submit</button>";
             item.innerHTML=string;
 		}
 	
@@ -65,7 +64,7 @@ include("db_credentials.php");
 
 	<div id="wrapper"></div>
 	<div id="select"> <h2>Login or sign up to view your upcoming events!</h2>
-	<br><div id="message"></div>
+	<br><div id="message"> <?php echo $message ?></div>
 
 	<div id="blank"></div>
 		
