@@ -2,10 +2,25 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="calender.css">
-</head>
 <!-- http://saracaponi.epizy.com/FinalProject.html?i=1 -->
 	<meta charset="utf-8">
 	<title>Final Project </title>
+	<script>
+	
+		function DisplayLogin(){
+			
+			var item= document.getElementById("blank");
+			var string= "User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='text' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Submit</button>";
+            item.innerHTML=string;
+		}
+	
+	  function DisplaySignUp(){
+            var item= document.getElementById("blank");
+            item.innerHTML="To Create An Accound Please Fill in the following information:<br>User Name: <input type='text' class='form' placeholder='Enter Username' name='Pusername' > <br> Password:  <input type='text' class='form' placeholder='Enter Password' name='Ppassword' > <br> <button id='submit' type='submit'>Create Account</button> ";
+        }
+	
+	
+	</script>
 	<style>  
      
         body{
@@ -31,11 +46,11 @@
 			 background: rgb(128,128,128); /* Fall-back for browsers that don't
                                     support rgba */
 			background: rgba(128,128,128,.5);
-			font-size:20pt;
-			width: 560px;
+			width: 600px;
 			margin: auto;
 			color: gold;
 			padding: 15px;
+			font-size: 14pt;
 		}
 		#wrapper{
 			width: 1400px;
@@ -44,35 +59,59 @@
 			
 		}
 		button {
-			background-color:gold;
 			background: rgba(255,215,0,.8);
-			border: none;
-			color: black;
 			padding: 15px 32px;
 			text-align: center;
-			text-decoration: none;
-			display: inline-block;
 			font-size: 16pt;
-			margin: 55pt;
+			margin: 20pt;
 			width: 180px;
+			border:none;
 }
 		button:hover {
 			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 			background-color: gold;
 }
+		.form{
+    		padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 3px solid #ccc;
+			-webkit-transition: 0.5s;
+			transition: 0.5s;
+			outline: none;
+		}	
+
+		.form:focus {
+			border: 3px solid #555;
+		}
+		#submit{
+	
+			background: rgba(0,0,0,.7);
+			padding: 8px 12px;
+			color: gold;
+			text-align: center;
+			font-size: 14pt;
+			margin: 12pt;
+			width: 90px;
+			border: none;
+		}
+		}
     </style>
 	
 	
-</head>
+	</head>
 <body>
 	
 	<h1>Events At Mizzou</h1>
-	<br><br>
+
 	<div id="wrapper"></div>
-	<div id="select"> Select a semester to view upcoming events </div>
-	<br><br><br><br><br>
-	
-	<button onclick="location.href='fallSemester.php'"> Fall 2018 </button>
-	<button onclick="location.href='springSemester.php'"> Spring 2019 </button>
+	<div id="select"> <h2>Login or sign up to view your upcoming events!</h2>
+	<br><br>
+
+	<div id="blank"></div>
+		
+	<button onclick="DisplayLogin()"> Login </button>
+	<button onclick="DisplaySignUp()"> Sign Up</button>
+	</div>
 	</body>
 </html>
