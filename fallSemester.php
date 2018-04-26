@@ -33,7 +33,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		 $sql2="UPDATE users SET loggedIn='N' WHERE id='$user_id'";
 		  mysqli_query($conn,$sql2);
 	echo $user_id;
-//		 header("location: fallSemester.php");
+$URL="http://saracaponi.epizy.com/FinalProject.php";
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 	
 	
 }
