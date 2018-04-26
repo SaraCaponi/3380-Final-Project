@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $servername = "sql207.epizy.com";
 $username = "epiz_21498761";
 $password = "kViPIdVw5uif";
@@ -25,10 +25,20 @@ if ($result->num_rows > 0) {
     	print json_encode($events);
     } else {  // html page
     	print generatePageHTML("Events", generateEventTableHTML($events));
+
     }
 }
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$user_id=$_SESSION['userid'];
+		 $sql2="UPDATE users SET loggedIn='N' WHERE id='$user_id'";
+		  mysqli_query($conn,$sql2);
+	echo $user_id;
+//		 header("location: fallSemester.php");
+	
+	
+}
 
-function generateTaskTableHTML($events) {
+function generateEventTableHTML($events) {
 	$html = "<table>\n";
 	$html .= "<tr id=rows><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
 	
@@ -66,56 +76,19 @@ function generatePageHTML($title, $body) {
 </head>
 <body>
 <button onclick="location.href='EventForm.php'"> Add Event</button>
-<button onclick="location.href='FinalProject.html'"> Home </button>
+<form action = '' method = 'post''><button type="submit"> Log Out </button>
 
 <div class='banner'>
 <img class='banner-image' src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
 <h1>Fall Events</h1>
 </div>
-
 $body
-
-
-
 </body>
 </html>
 EOT;
 
 	return $html;
 }
-function addEvent() {
-		$message = '';
-	
-		$organization = $_POST['org'];
-		$Eventtitle = $_POST['title'] ? $_POST['title'] : "untitled";
-		$description = $_POST['description'] ? $_POST['description'] : "";
-		$location = $_POST['location'] ? $_POST['location'] : "nolocation";
-		$when = $_POST['when'] ? $_POST['when'] : "notime";
-
-		
-		$mysqli = new mysqli($servername, $username, $password, $dbname);
 
 
-		if ($mysqli->connect_error) {
-			$message = $mysqli->connect_error;
-		} else {
-			$organization = $mysqli->real_escape_string($organization);
-			$Eventtitle = $mysqli->real_escape_string($Eventtitle);
-			$description = $mysqli->real_escape_string($description);
-			$location = $mysqli->real_escape_string($location);
-			$when = $mysqli->real_escape_string($when);
-	
-			$sql = "INSERT INTO tasks (organization, event,description,location, whatTime) VALUES ('$organization', '$Eventtitle', '$description', '$location','$when')";
-	
-			if ($result = $mysqli->query($sql)) {
-				$message = "Task was added";
-			} else {
-				$message = $mysqli->error;
-			}
-
-		}
-		
-		return $message;
-	}
 ?>
-

@@ -16,14 +16,15 @@ require('db_credentials.php');
       $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($mysqli,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+      $id = $row['id'];
+	   $_SESSION['userid']=$id;
       
       $count = mysqli_num_rows($result);
 		
       if($count == 1) {
-//         session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-
+		  $sql2="UPDATE users SET loggedIn='Y' WHERE id='$id'";
+		  mysqli_query($mysqli,$sql2);
          header("location: fallSemester.php");
       }else {
          $message = "Your Login Name or Password is invalid. Try Again";
