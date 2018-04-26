@@ -28,18 +28,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-
-function generateEventTableHTML($events) {
-
-	if ($message) {
-			$html = "<p class='message'>$message</p>\n";
-		}
-	
-		if (count($events) < 1) {
-			$html .= "<p>No events to display!</p>\n";
-			return $html;
-		}
-
 function generateTaskTableHTML($events) {
 	$html = "<table>\n";
 	$html .= "<tr id=rows><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
@@ -77,11 +65,11 @@ function generatePageHTML($title, $body) {
 <title>$title</title>
 </head>
 <body>
-<<<<<<< HEAD
 <button onclick="location.href='EventForm.php'"> Add Event</button>
 <button onclick="location.href='FinalProject.html'"> Home </button>
-<div class=banner>
-<img class=banner-image src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
+
+<div class='banner'>
+<img class='banner-image' src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
 <h1>Fall Events</h1>
 </div>
 
