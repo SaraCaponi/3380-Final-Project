@@ -7,7 +7,7 @@ require('db_credentials.php');
 		if ($mysqli->connect_error) {
 			$message = $mysqli->connect_error;
 		} 
-   
+   $_SESSION['message']="";
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       
       $myusername = mysqli_real_escape_string($mysqli,$_POST['username']);
@@ -18,8 +18,7 @@ require('db_credentials.php');
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
    
       
-      $count = mysqli_num_rows($result);
-	$_SESSION['message']="";	
+      $count = mysqli_num_rows($result);	
       if($count == 0) {
 	  		$_SESSION['login_user'] = $myusername;
 			$sql2="INSERT INTO users (username,password,loggedIn) VALUES('$myusername','$mypassword','Y')";

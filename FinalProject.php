@@ -7,8 +7,8 @@ require('db_credentials.php');
 		if ($mysqli->connect_error) {
 			$message = $mysqli->connect_error;
 		} 
-if($_SESSION['error']!="error"){
-	$_SESSION['message'] =" ";
+if($_SESSION["error"]!="error"){
+	$_SESSION["message"]=" ";
 }
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       
