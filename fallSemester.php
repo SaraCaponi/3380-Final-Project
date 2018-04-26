@@ -28,6 +28,7 @@ if ($result->num_rows > 0) {
     }
 }
 
+
 function generateEventTableHTML($events) {
 
 	if ($message) {
@@ -38,6 +39,14 @@ function generateEventTableHTML($events) {
 			$html .= "<p>No events to display!</p>\n";
 			return $html;
 		}
+
+function generateTaskTableHTML($events) {
+	$html = "<table>\n";
+	$html .= "<tr id=rows><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
+	
+	foreach ($events as $event) {
+		$html .= "<tr id=info><td>{$event['organization']}</td><td>{$event['event']}</td><td>{$event['description']}</td><td>{$event['location']}</td><td>{$event['whatTime']}</td></tr>\n";
+	}
 	
 		$html .= "<table>\n";
 		$html .= "<tr><th>actions</th><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th></tr>\n";
@@ -63,14 +72,23 @@ function generatePageHTML($title, $body) {
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="calender.css">
+<link rel="stylesheet" type="text/css" href="calender.php">
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Oxygen|Quicksand" rel="stylesheet">
 <title>$title</title>
 </head>
 <body>
+<<<<<<< HEAD
 <button onclick="location.href='EventForm.php'"> Add Event</button>
 <button onclick="location.href='FinalProject.html'"> Home </button>
+<div class=banner>
+<img class=banner-image src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
 <h1>Fall Events</h1>
+</div>
+
 $body
+
+
+
 </body>
 </html>
 EOT;
@@ -112,3 +130,4 @@ function addEvent() {
 		return $message;
 	}
 ?>
+
