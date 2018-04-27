@@ -7,7 +7,7 @@ require('db_credentials.php');
 		if ($mysqli->connect_error) {
 			$message = $mysqli->connect_error;
 		} 
-   $_SESSION['message']="";
+   $_SESSION['error']=0;
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       
       $myusername = mysqli_real_escape_string($mysqli,$_POST['username']);
@@ -29,11 +29,12 @@ require('db_credentials.php');
 	   		$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	   		$id = $row['id'];
 	   		$_SESSION['userid']=$id;
+		  	$_SESSION['error']=0;
+
 			  
          header("location: fallSemester.php");
       }else {
-         $_SESSION['message'] = "That username is taken. Please try again.";
-		  $_SESSION['error']="error";
+		  $_SESSION['error']=1;
 		  header("location: FinalProject.php");
 	   
       }

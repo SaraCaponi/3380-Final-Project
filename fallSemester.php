@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 $servername = "sql207.epizy.com";
 $username = "epiz_21498761";

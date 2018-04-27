@@ -7,9 +7,10 @@ require('db_credentials.php');
 		if ($mysqli->connect_error) {
 			$message = $mysqli->connect_error;
 		} 
-if($_SESSION["error"]!="error"){
-	$_SESSION["message"]=" ";
-}
+$printError="";
+	if($_SESSION['error']==1){
+		$printError="That username is taken. Please try again.";
+	}
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       
       $myusername = mysqli_real_escape_string($mysqli,$_POST['username']);
@@ -26,9 +27,10 @@ if($_SESSION["error"]!="error"){
          $_SESSION['login_user'] = $myusername;
 		  $sql2="UPDATE users SET loggedIn='Y' WHERE id='$id'";
 		  mysqli_query($mysqli,$sql2);
+		  $_SESSION['error']=0;
          header("location: fallSemester.php");
       }else {
-         $_SESSION['message'] = "Your Login Name or Password is invalid. Try Again";
+		  	$printError="Username and password do not match. Please try again.";
       }
    }
 ?>
@@ -37,7 +39,6 @@ if($_SESSION["error"]!="error"){
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="calender.css">
 <!-- http://saracaponi.epizy.com/FinalProject.html?i=1 -->
 	<meta charset="utf-8">
 	<title>Final Project </title>
@@ -49,12 +50,16 @@ if($_SESSION["error"]!="error"){
 			var item= document.getElementById("blank");
 			var string= " <form method = 'post''>User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='password' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Submit</button></form>";
             item.innerHTML=string;
+			var item2=document.getElementById("message");
+			item2.innerHTML="";
 		}
 	
 	  function DisplaySignUp(){
             var item= document.getElementById("blank");
-		    var string=" <form action='newUser.php' method = 'post''>User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='password' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Submit</button></form>";
+		    var string=" <form action='newUser.php' method = 'post''>User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='password' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Create Account</button></form>";
             item.innerHTML=string;
+		    var item2=document.getElementById("message");
+			item2.innerHTML="";
       
         }
 	
@@ -68,7 +73,7 @@ if($_SESSION["error"]!="error"){
 
 	<div id="wrapper"></div>
 	<div id="select"> <h2>Login or sign up to view your upcoming events!</h2>
-	<br><div id="message"> <?php echo $_SESSION['message'] ?></div>
+	<br><div id="message"> <?php echo $printError ?></div>
 
 	<div id="blank"></div>
 		
