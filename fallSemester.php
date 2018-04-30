@@ -38,7 +38,8 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$user_id=$_SESSION['userid'];
 	$event_id=$_GET['id'];
-	$sql="INSERT INTO rsvpEvent (userID, eventID) VALUES('$user_id','$event_id')";
+	$sql="INSERT INTO rsvpEvent (userID, eventID)
+	VALUES('$user_id','$event_id')";
 	mysqli_query($conn,$sql);
 	echo $user_id;
 	echo $event_id;
