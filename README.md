@@ -34,13 +34,13 @@ whatTime DATETIME NOT NULL
 
 ### Create, Read, Update, Delete
 
-*Create:
-*Read:
-Update:
-Delete:
+* Create:Creation is implemented when the user signs up for an account and is put in a database. Also, when you add an event to your events you create a record in RSVP event.
+* Read: When you view your personal events of view the calender.
+* Update: When you log in or out it changes a field in the table.
+* Delete: When you delete an event from your events, it is deleted from the RSVP table.
 
 
 ---
 
 ### Video Demonstartion
-*URL : 
+* URL : 
