@@ -76,6 +76,8 @@ function generatePageHTML($title, $body) {
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="calender.php">
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Oxygen|Quicksand" rel="stylesheet">
 <title>$title</title>
 </head>
 <body>
