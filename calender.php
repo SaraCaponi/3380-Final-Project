@@ -32,7 +32,8 @@ table, th, td{
     width: 100%;
     display: block;
 }
-.banner > .banner-image{
+.banner-image{
+    background-image: url("http://chrisrphoto.blogspot.com/2011/11/university-of-missouri-fall-afternoon.html")
     width: 100%;
     display: block;
 }

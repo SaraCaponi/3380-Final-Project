@@ -9,6 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("<p>Connection failed: " . $conn->connect_error . "</p>");
 }
+
 $sql = "SELECT * FROM Events";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -21,6 +22,7 @@ if ($result->num_rows > 0) {
     	print json_encode($events);
     } else {  // html page
     	print generatePageHTML("Events", generateEventTableHTML($events));
+
     }
 }
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,7 +32,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 $URL="http://saracaponi.epizy.com/FinalProject.php";
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';		
-	}
+}
+
+
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$user_id=$_SESSION['userid'];
 	$event_id=$_GET['id'];
@@ -56,7 +60,24 @@ function generateEventTableHTML($events) {
 			</form></td></tr>\n";
 		}
 		$html .= "</table>\n";
+
+		$html="<h1>Upcoming Events!</h1>";
+		$html .= "<table>\n";
+		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
 	
+		foreach ($events as $event) {
+			$id = $event['id'];
+			$org = $event['organization'];
+			$EventTitle = $event['event'];
+			$description = ($event['description']) ? $event['description'] : '';
+			$location = $event['location'];
+			$whatTime=$event['whatTime'];
+			
+			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='fallSemester.php' method='get'><button type='submit' name='id' value='$id'> Add to my Events </button>
+			</form></td></tr>\n";
+		}
+		$html .= "</table>\n";
+
 		return $html;
 }
 function generatePageHTML($title, $body) {
@@ -69,6 +90,7 @@ function generatePageHTML($title, $body) {
         <title>$title</title>
         </head>
 <body>
+
 <div class="nav">
     <button onclick="location.href='myEvents.php'">View My Events</button>
     <form action = '' method = 'post''><button type="submit"> Log Out </button>
@@ -77,10 +99,19 @@ function generatePageHTML($title, $body) {
         <img class="banner-image" src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
         <h1>Upcoming Events!</h1>
         </div>
+
+<button onclick="location.href='myEvents.php'">View My Events</button>
+<form action = '' method = 'post''><button type="submit"> Log Out </button></form>
+
+<img src="http://4.bp.blogspot.com/-JSaUheRSLvw/TrcFM0dNhJI/AAAAAAAADmo/fjNj56Xd6G8/s1600/Mizzou+11-06-2011+113.jpg">
+
+</div>
+
 $body
 </body>
 </html>
 EOT;
 	return $html;
 }
+
 ?>

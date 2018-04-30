@@ -1,78 +1,76 @@
+<?php
+include("db_credentials.php");
+   session_start();
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      
+      $myusername = mysqli_real_escape_string($conn,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
+      
+      $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+		
+      if($count == 1) {
+         session_register("myusername");
+         $_SESSION['login_user'] = $myusername;
+
+         header("location: fallSemester.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="calender.css">
-</head>
 <!-- http://saracaponi.epizy.com/FinalProject.html?i=1 -->
 	<meta charset="utf-8">
 	<title>Final Project </title>
-	<style>  
-    
-        body{
-/*            background-image: url("Columns.jpg");*/
-			background-size:1450px 900px;
-			text-align: center;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-			background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/90/University_of_Missouri_-_Jesse_Hall.jpg") 
-        }
-		h1{
-			padding: 30px;
-			font-size: 60pt;
-			color: gold;
-		}
-		h3{
-			padding: 30px;
-			font-size: 30pt;
-			color: gold;
-			opacity: 0.5;
-
-		}
-		#select{
-			 background: rgb(128,128,128); /* Fall-back for browsers that don't
-                                    support rgba */
-			background: rgba(128,128,128,.5);
-			font-size:20pt;
-			width: 560px;
-			margin: auto;
-			color: gold;
-			padding: 15px;
-		}
-		#wrapper{
-			width: 1400px;
-			text-align: center;
-			margin-top: 100px;
+	<link rel="stylesheet" type="text/css" href="mainPage.css">
+	<script>
+	
+		function DisplayLogin(){
 			
+			var item= document.getElementById("blank");
+			var string= " <form action = '' method = 'post''>User Name: <input type='text' class='form' placeholder='Enter Username' name='username' > <br> Password:  <input type='text' class='form' placeholder='Enter Password' name='password' > <br> <button id='submit' type='submit'>Submit</button>";
+            item.innerHTML=string;
 		}
-		button {
-			background-color:gold;
-			background: rgba(255,215,0,.8);
-			border: none;
-			color: black;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16pt;
-			margin: 55pt;
-			width: 180px;
-}
-		button:hover {
-			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-			background-color: gold;
-}
-    </style>
+	
+	  function DisplaySignUp(){
+            var item= document.getElementById("blank");
+            item.innerHTML="To Create An Accound Please Fill in the following information:<br>User Name: <input type='text' class='form' placeholder='Enter Username' name='Pusername' > <br> Password:  <input type='text' class='form' placeholder='Enter Password' name='Ppassword' > <br> <button id='submit' type='submit'>Create Account</button> ";
+        }
 	
 	
-</head>
+	</script>
+	
+	</head>
 <body>
 	
 	<h1>Events At Mizzou</h1>
-	<br><br>
+
 	<div id="wrapper"></div>
-	<div id="select"> Select a semester to view upcoming events </div>
-	<br><br><br><br><br>
-	
-	<button onclick="location.href='fallSemester.php'"> Fall 2018 </button>
-	<button onclick="location.href='springSemester.php'"> Spring 2019 </button>
+	<div id="select"> <h2>Login or sign up to view your upcoming events!</h2>
+	<br><div id="message"></div>
+
+	<div id="blank"></div>
+		
+	<button onclick="DisplayLogin()"> Login </button>
+	<button onclick="DisplaySignUp()"> Sign Up</button>
+	</div>
 	</body>
 </html>
