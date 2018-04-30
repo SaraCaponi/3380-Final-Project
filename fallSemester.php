@@ -28,6 +28,14 @@ if ($result->num_rows > 0) {
 
     }
 }
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$user_id=$_SESSION['userid'];
+		 $sql2="UPDATE users SET loggedIn='N' WHERE id='$user_id'";
+		  mysqli_query($conn,$sql2);
+$URL="http://saracaponi.epizy.com/FinalProject.php";
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';		
+	}
 
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$user_id=$_SESSION['userid'];
