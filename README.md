@@ -1,4 +1,4 @@
-# 3380-Final-Projet
+# 3380-Final-Project
 ---
 * List of Group Members
 * Sara Caponi
