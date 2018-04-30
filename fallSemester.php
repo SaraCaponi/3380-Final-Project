@@ -28,14 +28,6 @@ if ($result->num_rows > 0) {
 
     }
 }
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-	$user_id=$_SESSION['userid'];
-		 $sql2="UPDATE users SET loggedIn='N' WHERE id='$user_id'";
-		  mysqli_query($conn,$sql2);
-$URL="http://saracaponi.epizy.com/FinalProject.php";
-echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';		
-	}
 
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$user_id=$_SESSION['userid'];
@@ -46,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	echo $event_id;
 }
 function generateEventTableHTML($events) {
-	
+		$html="<h1>Upcoming Events!</h1>";
 		$html .= "<table>\n";
 		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
 	
@@ -81,7 +73,6 @@ function generatePageHTML($title, $body) {
 
 <div class='banner'>
 <img class='banner-image' src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
-<h1>Upcoming Events!</h1>
 </div>
 $body
 </body>
