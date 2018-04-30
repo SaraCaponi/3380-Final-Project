@@ -77,7 +77,7 @@ function generatePageHTML($title, $body) {
 </head>
 <body>
 <button onclick="location.href='myEvents.php'">View My Events</button>
-<form action = '' method = 'post''><button type="submit"> Log Out </button>
+<form action = '' method = 'post''><button type="submit"> Log Out </button></form>
 
 <div class='banner'>
 <img class='banner-image' src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">

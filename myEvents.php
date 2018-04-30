@@ -33,16 +33,24 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$event_id=$_GET['id'];
 	$sql="DELETE FROM rsvpEvent WHERE eventID='$event_id'";
 	$result2 = $conn->query($sql);
-	
 	if (($result->num_rows)== 0) {
 		$html="<h4> You dont have any upcoming events</h4>";
 		print generatePageHTML("Events", $html);
 	}
 }
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$user_id=$_SESSION['userid'];
+		 $sql2="UPDATE users SET loggedIn='N' WHERE id='$user_id'";
+		  mysqli_query($conn,$sql2);
+$URL="http://saracaponi.epizy.com/FinalProject.php";
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';		
+	}
+
 function generateEventTableHTML($events) {
 		$html="<h1> Your upcoming Events</h1>";
 		$html .= "<table>\n";
-		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n <button type='submit' hidden='hidden' action='' method='GET'></button>" ;
+		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th>";
 		if (count($events) < 1) {
 			$html .= "<p>No events to display!</p>\n";
 			return $html;
@@ -55,7 +63,7 @@ function generateEventTableHTML($events) {
 			$location = $event['location'];
 			$whatTime=$event['whatTime'];
 			
-			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='myEvents.php' method='get'><button type='submit' name='id' value='$id'> Delete from my Events </button>
+			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='myEvents.php' method='GET'><button type='submit' name='id' value='$id'> Delete from my Events </button>
 			</form></td></tr>\n";
 		}
 		$html .= "</table>\n";
@@ -71,7 +79,8 @@ function generatePageHTML($title, $body) {
 <title>$title</title>
 </head>
 <body>
-</div>
+<button onclick="location.href='fallSemester.php'">View Events</button>
+<form action = '' method = 'post''><button type="submit"> Log Out </button></form>
 $body
 </body>
 </html>
