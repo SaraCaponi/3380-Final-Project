@@ -23,3 +23,24 @@ whatTime DATETIME NOT NULL
 
 ---
 
+### ERD for the database
+
+
+
+
+
+
+---
+
+### Create, Read, Update, Delete
+
+*Create:
+*Read:
+Update:
+Delete:
+
+
+---
+
+### Video Demonstartion
+*URL : 
