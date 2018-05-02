@@ -39,7 +39,7 @@ loggedIn char(2) NOT NULL
 
 ### ERD for the database
 
-
+![ERD](desktop/erdPhoto.pdf)
 
 
 
