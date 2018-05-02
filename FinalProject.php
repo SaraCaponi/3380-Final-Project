@@ -42,7 +42,7 @@ $printError="";
 <!-- http://saracaponi.epizy.com/FinalProject.html?i=1 -->
 	<meta charset="utf-8">
 	<title>Final Project </title>
-	<link rel="stylesheet" type="text/css" href="mainPage.css">
+	<link rel="stylesheet" type="text/css" href="mainPage2.css">
 	<script>
 	
 		function DisplayLogin(){
