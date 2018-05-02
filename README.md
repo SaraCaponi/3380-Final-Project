@@ -39,7 +39,7 @@ loggedIn char(2) NOT NULL
 
 ### ERD for the database
 
-![ERD](desktop/erdPhoto.pdf)
+![ERD](https://raw.githubusercontent.com/SaraCaponi/3380-Final-Projet/master/erdPhoto.png)
 
 
 
