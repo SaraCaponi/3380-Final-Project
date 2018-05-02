@@ -10,7 +10,7 @@ h1{
     position: absolute;
     left: 50%;
     top: 90%;
-    }
+}
 body{
 	background-color: lightgrey;
 }
@@ -19,23 +19,27 @@ table, th, td{
     text-align: center;
     padding: 2px;
 }
-#rows{
+.rows{
     font-size: 40px;
     font-family: 'Quicksand', sans-serif;
     background-color: gold;
 }
-#info{
-    font-size:20px;
+.info{
+    font-size:20px bold;
     font-family: 'Quicksand', sans-serif;
 }
-.banner{
+img{
     width: 100%;
     display: block;
+    clip: rect(100px,0px,200px,0px); 
+    overflow: hidden;
 }
-.banner-image{
-    background-image: url("http://chrisrphoto.blogspot.com/2011/11/university-of-missouri-fall-afternoon.html")
-    width: 100%;
-    display: block;
+
+.button{
+    font-family: 'Quicksand', sans-serif;
+    background-color: gold;
+    border: 1px solid black;
+    font-size: 20px;
 }
 .nav{
     text-align: right;

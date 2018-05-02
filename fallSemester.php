@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 function generateEventTableHTML($events) {
 	
-		$html .= "<table>\n";
+		$html .= "<table\n";
 		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
 	
 		foreach ($events as $event) {
@@ -64,7 +64,7 @@ function generateEventTableHTML($events) {
 
 		$html="<h1>Upcoming Events!</h1>";
 		$html .= "<table>\n";
-		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
+		$html .= "<tr class='rows'><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
 	
 		foreach ($events as $event) {
 			$id = $event['id'];
@@ -74,7 +74,7 @@ function generateEventTableHTML($events) {
 			$location = $event['location'];
 			$whatTime=$event['whatTime'];
 			
-			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='fallSemester.php' method='get'><button type='submit' name='id' value='$id'> Add to my Events </button>
+			$html .= "<tr class='info'><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='fallSemester.php' method='get'><button class='button' type='submit' name='id' value='$id'> Add to my Events </button>
 			</form></td></tr>\n";
 		}
 		$html .= "</table>\n";
@@ -87,26 +87,21 @@ function generatePageHTML($title, $body) {
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="calender.php">
+        
         <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Oxygen|Quicksand" rel="stylesheet">
+        
         <title>$title</title>
-        </head>
+    </head>
 <body>
 
 <div class="nav">
-    <button onclick="location.href='myEvents.php'">View My Events</button>
-    <form action = '' method = 'post''><button type="submit"> Log Out </button>
+    <button class="button" onclick="location.href='myEvents.php'">View My Events</button>
+    <form action = '' method = 'post''><button class="button" type="submit"> Log Out </button>
 </div>
-    <div class='banner'>
-        <img class="banner-image" src="mizzou.jpg" alt="mizzou" style="width:100%; height:50%;">
-        <h1>Upcoming Events!</h1>
-        </div>
 
-<button onclick="location.href='myEvents.php'">View My Events</button>
-<form action = '' method = 'post''><button type="submit"> Log Out </button></form>
 
-<img src="http://4.bp.blogspot.com/-JSaUheRSLvw/TrcFM0dNhJI/AAAAAAAADmo/fjNj56Xd6G8/s1600/Mizzou+11-06-2011+113.jpg">
 
-</div>
+<img src="http://4.bp.blogspot.com/-JSaUheRSLvw/TrcFM0dNhJI/AAAAAAAADmo/fjNj56Xd6G8/s1600/Mizzou+11-06-2011+113.jpg" width="100%" height:"50%">
 
 $body
 </body>

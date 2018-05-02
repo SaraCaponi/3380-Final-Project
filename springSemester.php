@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 function generateEventTableHTML($events) {
 	
 		$html .= "<table>\n";
-		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
+		$html .= "<tr class='rows'><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
 	
 		foreach ($events as $event) {
 			$id = $event['id'];
@@ -52,7 +52,7 @@ function generateEventTableHTML($events) {
 			$location = $event['location'];
 			$whatTime=$event['whatTime'];
 			
-			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='fallSemester.php' method='get'><button type='submit' name='id' value='$id'> Add to my Events </button>
+			$html .= "<tr class='info'><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='fallSemester.php' method='get'><button class='button' type='submit' name='id' value='$id'> Add to my Events </button>
 			</form></td></tr>\n";
 		}
 		$html .= "</table>\n";
@@ -69,13 +69,15 @@ function generatePageHTML($title, $body) {
 <title>$title</title>
 </head>
 <body>
-    <button onclick="location.href='myEvents.php'">View My Events</button>
-    <form action = '' method = 'post''><button type="submit"> Log Out </button>
-    
-<img src="http://4.bp.blogspot.com/-JSaUheRSLvw/TrcFM0dNhJI/AAAAAAAADmo/fjNj56Xd6G8/s1600/Mizzou+11-06-2011+113.jpg">
 
-        <h1>Upcoming Events!</h1>
-    </div>
+<div class="nav">
+    <button class="button" onclick="location.href='myEvents.php'">View My Events</button>
+    <form action = '' method = 'post''><button class="button" type="submit"> Log Out </button>
+</div>    
+
+    <img src="http://mediad.publicbroadcasting.net/p/kcur/files/styles/x_large/public/201407/Mizzou_Jesse.jpg" width:"941.333px" height:"746.665px">
+    <h1>Upcoming Events!</h1>
+
 $body
 </body>
 </html>
