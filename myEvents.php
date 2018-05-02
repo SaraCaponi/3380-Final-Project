@@ -48,8 +48,8 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 	}
 
 function generateEventTableHTML($events) {
-		$html="<h1> Your upcoming Events</h1>";
-		$html .= "<table>\n";
+
+		$html = "<table>\n";
 		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th>";
 		if (count($events) < 1) {
 			$html .= "<p>No events to display!</p>\n";
@@ -63,7 +63,7 @@ function generateEventTableHTML($events) {
 			$location = $event['location'];
 			$whatTime=$event['whatTime'];
 			
-			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='myEvents.php' method='GET'><button type='submit' name='id' value='$id'> Delete from my Events </button>
+			$html .= "<tr><td>$org</td><td>$EventTitle</td><td>$description</td><td>$location</td><td>$whatTime</td><td><form action='myEvents.php' method='GET'><button class='button' type='submit' name='id' value='$id'> Delete from my Events </button>
 			</form></td></tr>\n";
 		}
 		$html .= "</table>\n";
@@ -81,8 +81,12 @@ function generatePageHTML($title, $body) {
 <title>$title</title>
 </head>
 <body>
-<button onclick="location.href='fallSemester.php'">View Events</button>
-<form action = '' method = 'post''><button type="submit"> Log Out </button></form>
+<div class="nav">
+<button class="button" onclick="location.href='fallSemester.php'">View Events</button>
+<form action = '' method = 'post''><button class="button" type="submit"> Log Out </button></form>
+</div>
+ <img src="http://mediad.publicbroadcasting.net/p/kcur/files/styles/x_large/public/201407/Mizzou_Jesse.jpg" width:"941.333px" height:"746.665px">
+
 $body
 </body>
 </html>
