@@ -96,7 +96,7 @@ function generatePageHTML($title, $body) {
 
 <div class="nav">
     <button class="button" onclick="location.href='myEvents.php'">View My Events</button>
-    <form action = '' method = 'post''><button class="button" type="submit"> Log Out </button>
+    <form action = '' method = 'post''><button class="button" type="submit"> Log Out </button> </form>
 </div>
 
 

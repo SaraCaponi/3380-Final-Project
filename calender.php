@@ -38,6 +38,7 @@ table, th, td{
 img{
     width: 100%;
     display: block;
+	height: 50%;
     clip: rect(100px,0px,200px,0px); 
     overflow: hidden;
 }
