@@ -64,7 +64,7 @@ function generateEventTableHTML($events) {
 
 		$html="<h1>Upcoming Events!</h1>";
 		$html .= "<table>\n";
-		$html .= "<tr class='rows'><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th></tr>\n";
+		$html .= "<tr class='rows'><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>Actions</th></tr>\n";
 	
 		foreach ($events as $event) {
 			$id = $event['id'];
@@ -95,15 +95,18 @@ function generatePageHTML($title, $body) {
 <body>
 
 <div class="nav">
-    <button class="button" onclick="location.href='myEvents.php'">View My Events</button>
-    <form action = '' method = 'post''><button class="button" type="submit"> Log Out </button> </form>
+    <button class="button button2 ME" onclick="location.href='myEvents.php'">View My Events</button>
+    <form action = '' method = 'post''><button class="button button2 LO" type="submit"> Log Out </button> </form>
 </div>
 
 
-
-<img src="http://4.bp.blogspot.com/-JSaUheRSLvw/TrcFM0dNhJI/AAAAAAAADmo/fjNj56Xd6G8/s1600/Mizzou+11-06-2011+113.jpg" width="100%" height:"50%">
-
+<div class="image_div">
+<img src="http://4.bp.blogspot.com/-JSaUheRSLvw/TrcFM0dNhJI/AAAAAAAADmo/fjNj56Xd6G8/s1600/Mizzou+11-06-2011+113.jpg" style="position: absolute;
+	clip: rect(200px, 1450px, 600px, 0px); width: 100%; top: -200px;  z-index: -1;" >
+</div>
+<div class="body_div">
 $body
+</div>
 </body>
 </html>
 EOT;

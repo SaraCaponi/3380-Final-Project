@@ -8,14 +8,12 @@ h1{
     font-size: 70px;
     text-align: center;
     position: absolute;
-    left: 50%;
-    top: 90%;
+  	top:-380px;
+	color: gold;
 }
 h4{
     font-family: 'Oxygen', sans-serif;
     font-size: 70px;
-    text-align: center;
-    position: absolute;
     
 }
 body{
@@ -35,13 +33,6 @@ table, th, td{
     font-size:20px bold;
     font-family: 'Quicksand', sans-serif;
 }
-img{
-    width: 100%;
-    display: block;
-	height: 50%;
-    clip: rect(100px,0px,200px,0px); 
-    overflow: hidden;
-}
 
 .button{
     font-family: 'Quicksand', sans-serif;
@@ -49,7 +40,21 @@ img{
     border: 1px solid black;
     font-size: 20px;
 }
+
+
 .nav{
     text-align: right;
     padding: 10px 0 10 0;
+}
+.body_div{
+	position:absolute;
+	top:330px;
+}
+#MET{
+position:absolute;
+	top:385px;
+}
+#YE{
+	top:-430px;
+	color: white;
 }

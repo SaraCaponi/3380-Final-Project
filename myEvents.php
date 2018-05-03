@@ -50,7 +50,8 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 function generateEventTableHTML($events) {
 
 		$html = "<table>\n";
-		$html .= "<tr><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>actions</th>";
+	$html .="<h1 id='YE'>Your Events!</h1>";
+		$html .= "<tr class='rows'><th>Organization</th><th>Event</th><th>Description</th><th>Location</th><th>Time</th><th>Actions</th>";
 		if (count($events) < 1) {
 			$html .= "<p>No events to display!</p>\n";
 			return $html;
@@ -85,9 +86,13 @@ function generatePageHTML($title, $body) {
 <button class="button" onclick="location.href='fallSemester.php'">View Events</button>
 <form action = '' method = 'post''><button class="button" type="submit"> Log Out </button></form>
 </div>
- <img src="http://mediad.publicbroadcasting.net/p/kcur/files/styles/x_large/public/201407/Mizzou_Jesse.jpg" width:"941.333px" height:"746.665px">
+ <img src="http://mediad.publicbroadcasting.net/p/kcur/files/styles/x_large/public/201407/Mizzou_Jesse.jpg" width:"941.333px" height:"746.665px"
+ style="position: absolute;
+	clip: rect(20px, 1450px, 450px, 0px); width: 100%; top:-65px; z-index: -1;">
 
+<div class="body_div" id="MET" >
 $body
+</div>
 </body>
 </html>
 EOT;
