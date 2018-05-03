@@ -7,6 +7,7 @@
 ---
 ### Link to project 
 * URL: http://saracaponi.epizy.com/FinalProject.php
+---
 ### Description Of Application
 
 Our application is created for MU students to easily find events going on around campus.  The user can sign up for an account to login to their personal portal for events that can be selected. A list of events going around campus will be easily viewed and the user can select the events they are interested to be bookmarked into "their events". The events can be deleted and added as the user pleases to personalize their own scheudle. The purpose of the application is to be like a virutal collaborative planner for students to interact with their colleages. 
