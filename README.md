@@ -61,3 +61,11 @@ loggedIn char(2) NOT NULL
 
 ### Video Demonstartion
 * URL : 
+
+---
+
+### LOG IN
+* Can use  
+> USERNAME: test  
+> PASSWORD: testing 
+* Or can create a new user account to view content 
