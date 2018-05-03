@@ -15,27 +15,27 @@ Our application is created for MU students to easily find events going on around
 ---
 ### Database Schema
 
-CREATE TABLE Events(
-id INT NOT NULL AUTO_INCREMENT PRIMARY,
-orginization varchar(200) NOT NULL,
-event varchar(200) NOT NULL,
-description mediumtext,
-location varchar(200) NOT NULL,
-whatTime DATETIME NOT NULL
-);
+CREATE TABLE Events(  
+id INT NOT NULL AUTO_INCREMENT PRIMARY,  
+orginization varchar(200) NOT NULL,  
+event varchar(200) NOT NULL,  
+description mediumtext,  
+location varchar(200) NOT NULL,  
+whatTime DATETIME NOT NULL  
+);  
 
-CREATE TABLE rsvpEvent(
-id INT NOT NULL AUTO_INCREMENT PRIMARY,
-userID INT NOT NULL,
-eventID INT NOT NULL
-);
+CREATE TABLE rsvpEvent(  
+id INT NOT NULL AUTO_INCREMENT PRIMARY,  
+userID INT NOT NULL,  
+eventID INT NOT NULL  
+);  
 
-CREATE TABLE users(
-id INT NOT NULL AUTO_INCREMENT PRIMARY,
-username varchar(200) NOT NULL,
-password varchar(200) NOT NULL,
-loggedIn char(2) NOT NULL
-);
+CREATE TABLE users(  
+id INT NOT NULL AUTO_INCREMENT PRIMARY,  
+username varchar(200) NOT NULL,  
+password varchar(200) NOT NULL,  
+loggedIn char(2) NOT NULL  
+);  
 
 
 ---
