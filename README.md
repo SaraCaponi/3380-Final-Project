@@ -60,7 +60,7 @@ loggedIn char(2) NOT NULL
 ---
 
 ### Video Demonstartion
-* URL : [https://youtu.be/pKrHg1pI_o4]
+* URL : https://youtu.be/2FSton5KdQA
 
 ---
 
